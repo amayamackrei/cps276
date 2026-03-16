@@ -58,3 +58,18 @@ function createTable($rows, $columns) {
     ?>
 </body>
 </html>
+
+<!-- 1. The assignment specifies "all PHP written at the top above the HTML DOCtpye. Explain the implications of this placement 
+ on how the server processes the page. What advantage does generating all PHP variables before any HTML output provide in 
+ terms of execution flow?
+ 2. Beyond simply finding even numbers, describe a scenario when you would use a similiar foreach loop with a conditional (if) 
+ statement to filter or process elements from an array based on different criteria like finding all numbers divisable by 7
+ 3. Discuss the primary benefits of using heredoc for embedding large blocks of HTML or other text within PHP strings, especially 
+ when that text contains quotes or multiple lines. How does it improve code readability compared to concatenating strings with
+ double quotes?
+ 4.The createTable funct uses nested loops to build the table. Describe the role each loop: which one is responsible for iterating
+ through the rows, and which for the columns? How does the concatenation (.=) inside these loops incrementally build the complete 
+ HTML table strings?
+ 5. The createTable() funct returns a string that is later echoed, rather than echoing directly inside the funct. Explain the benefits
+ this approach. How does the returning value make the funct more reusale and flexible compared to having the funct echo directly? What
+ are the implications for testing or reusing this funct in different contexts?

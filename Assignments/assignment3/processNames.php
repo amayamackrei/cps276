@@ -1,43 +1,41 @@
 <?php
 
-function addCleanNames() {
-
-    // clicked clear
-    if (isset($_POST["clear"])) {
+function addClearNames() : string
+{
+    $button = $_POST["btn"] ?? "";
+    $currentList = $_POST["namelist"] ?? "";
+ // clear name
+    if ($button === "clear") {
         return "";
     }
 
-    $namesString = $_POST["namelist"];
+    // add a name
+    $fullName = $_POST["fullname"] ?? "";
+    $fullName = trim($fullName);
 
+    // Split into array \n
     $namesArray = [];
-
-    // already names, split into array
-    if ($namesString != "") {
-        $namesArray = explode("\n", $namesString);
+    if (trim($currentList) !== "") {
+        $namesArray = explode("\n", trim($currentList));
     }
 
-    // new name
-    $newName = $_POST["name"];
-
-    // split fname, lname
-    $parts = explode(" ", $newName);
-
-    $first = $parts[0];
-    $last = $parts[1];
+    // first last
+    $parts = explode(" ", $fullName);
+    $first = $parts[0] ?? "";
+    $last  = $parts[1] ?? "";
 
     // capital first letter
     $first = ucfirst(strtolower($first));
-    $last = ucfirst(strtolower($last));
+    $last  = ucfirst(strtolower($last));
 
-    // lname, fname
+    // convert to "Last, First"
     $formatted = $last . ", " . $first;
 
-    // add to array
-    array_push($namesArray, $formatted);
+    // add
+    $namesArray[] = $formatted;
 
-    // sort A-Z
+    // sort alphabetically 
     sort($namesArray);
 
-    $output = implode("\n", $namesArray);
-    return $output;
+    return implode("\n", $namesArray);
 }
