@@ -54,7 +54,6 @@ $message
     </div>
 
     <div class='mb-3'>
-        <label for='pdf_file' class='form-label'>Upload PDF</label>
         <input type='file' class='form-control' name='pdf_file' id='pdf_file'>
     </div>
 
