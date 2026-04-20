@@ -16,12 +16,11 @@ if ($result === 'error') {
     $response['masterstatus'] = 'error';
     $response['msg'] = 'There was an error retrieving the names';
 } else {
-
     $namesHtml = '';
     
     if (count($result) === 0) {
         $namesHtml = '<p>No names to display</p>';
-    }
+    } else {
         foreach ($result as $row) {
             $namesHtml .= '<p>' . htmlspecialchars($row['fullname']) . '</p>';
         }
