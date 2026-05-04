@@ -1,8 +1,4 @@
 <?php
-/**
- * welcome.php
- * Welcome page shown after a successful login.
- */
 
 function init() {
     $userName = $_SESSION['name'] ?? '';
