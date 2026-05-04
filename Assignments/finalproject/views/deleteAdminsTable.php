@@ -1,12 +1,12 @@
 <?php
-
 function init() {
     require_once 'controllers/deleteAdminProc.php';
-    global $msg, $records;
+    $data    = processDeleteAdmins();
+    $msg     = $data['msg'];
+    $records = $data['records'];
 
     ob_start();
-
-
+    ?>
     <h1>Delete Admin(s)</h1>
     <?php echo $msg; ?>
     <?php if (empty($records)): ?>
@@ -17,12 +17,8 @@ function init() {
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>Status</th>
-                        <th>Delete</th>
+                        <th>First Name</th><th>Last Name</th><th>Email</th>
+                        <th>Password</th><th>Status</th><th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,9 +34,7 @@ function init() {
                             <td><?php echo htmlspecialchars($row['email']); ?></td>
                             <td><?php echo htmlspecialchars($row['password']); ?></td>
                             <td><?php echo htmlspecialchars($row['status']); ?></td>
-                            <td>
-                                <input type="checkbox" name="chkbx[]" value="<?php echo (int)$row['id']; ?>">
-                            </td>
+                            <td><input type="checkbox" name="chkbx[]" value="<?php echo (int)$row['id']; ?>"></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -1,8 +1,9 @@
 <?php
-
 function init() {
     require_once 'controllers/deleteContactProc.php';
-    global $msg, $records;
+    $data    = processDeleteContacts();
+    $msg     = $data['msg'];
+    $records = $data['records'];
 
     ob_start();
     ?>
@@ -16,17 +17,9 @@ function init() {
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>DOB</th>
-                        <th>Contact</th>
-                        <th>Age</th>
-                        <th>Delete</th>
+                        <th>First Name</th><th>Last Name</th><th>Address</th><th>City</th>
+                        <th>State</th><th>Phone</th><th>Email</th><th>DOB</th>
+                        <th>Contact</th><th>Age</th><th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,9 +35,7 @@ function init() {
                             <td><?php echo htmlspecialchars($row['dob']); ?></td>
                             <td><?php echo htmlspecialchars($row['contacts']); ?></td>
                             <td><?php echo htmlspecialchars($row['age']); ?></td>
-                            <td>
-                                <input type="checkbox" name="chkbx[]" value="<?php echo (int)$row['id']; ?>">
-                            </td>
+                            <td><input type="checkbox" name="chkbx[]" value="<?php echo (int)$row['id']; ?>"></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
